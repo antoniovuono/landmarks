@@ -2,9 +2,20 @@ import SwiftUI
 
 struct LandmarksList: View {
     var body: some View {
-        List {
-            LandmarkRow(landmark: landmarks[0])
-            LandmarkRow(landmark: landmarks[1])
+        //Create de navigation
+        NavigationView {
+            //Return a list from a component
+            List(landmarks) { landmark in
+                //Create a link where we want to go to visit
+                NavigationLink {
+                    //Call the view who we want to go
+                    LandmarkDetail(landmark: landmark)
+                } label: {
+                    //Label where we click to go to the place
+                    LandmarkRow(landmark: landmark)
+                }
+            }
+            .navigationTitle("Landmarks")
         }
     }
 }
